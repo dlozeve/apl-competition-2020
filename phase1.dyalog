@@ -7,4 +7,5 @@
  (26⊥64-⍨⎕UCS)
  ⍝ 6: Please Move to the Front
  {⍵[⍋⍺≠⍵]}
- 
+ ⍝ 7: See You in a Bit
+ {f←⍸∘⌽(2∘⊥⍣¯1)⋄∧/(f⍺)∊f⍵}
