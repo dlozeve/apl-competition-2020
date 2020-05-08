@@ -7,6 +7,8 @@
  (26⊥64-⍨⎕UCS)
  ⍝ 4: Take a Leap
  (1 3∊⍨(0+.=400 100 4∘.|⊢))
+ ⍝ 5: Stepping in the Proper Direction
+ {(⊃⍵)+(-×-/⍵)×0,⍳|-/⍵}
  ⍝ 6: Please Move to the Front
  {⍵[⍋⍺≠⍵]}
  ⍝ 7: See You in a Bit
