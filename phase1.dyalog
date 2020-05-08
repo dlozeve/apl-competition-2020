@@ -5,4 +5,6 @@
  {(~⍵∊127+⍳64)⊂⍵}
  ⍝ 3: Excel-lent Columns
  (26⊥64-⍨⎕UCS)
+ ⍝ 6: Please Move to the Front
+ {⍵[⍋⍺≠⍵]}
  
