@@ -1,17 +1,16 @@
  ⍝ 1: Let's Split!
- {(0>⍺)⌽(⊂⍺↑⍵),⊂⍺↓⍵}
- ((0>⊣)⌽((⊂↑),(⊂↓)))
+ split←(0>⊣)⌽((⊂↑),(⊂↓))
  ⍝ 2: Character Building
- {(~⍵∊127+⍳64)⊂⍵}
+ characters←{(~⍵∊127+⍳64)⊂⍵}
  ⍝ 3: Excel-lent Columns
- (26⊥64-⍨⎕UCS)
+ columns←26⊥64-⍨⎕UCS
  ⍝ 4: Take a Leap
- (1 3∊⍨(0+.=400 100 4∘.|⊢))
+ leap←1 3∊⍨(0+.=400 100 4∘.|⊢)
  ⍝ 5: Stepping in the Proper Direction
- {(⊃⍵)+(-×-/⍵)×0,⍳|-/⍵}
+ stepping←{(⊃⍵)+(-×-/⍵)×0,⍳|-/⍵}
  ⍝ 6: Please Move to the Front
- {⍵[⍋⍺≠⍵]}
+ movefront←{⍵[⍋⍺≠⍵]}
  ⍝ 7: See You in a Bit
- {f←⍸∘⌽(2∘⊥⍣¯1)⋄∧/(f⍺)∊f⍵}
+ bits←{f←⍸∘⌽(2∘⊥⍣¯1)⋄∧/(f⍺)∊f⍵}
  ⍝ 8: Zigzag Numbers
- (∧/2 ¯2∊⍨2-/∘×2-/(10∘⊥⍣¯1))
+ zigzag←∧/2=∘|2-/∘×2-/(10∘⊥⍣¯1)
