@@ -30,10 +30,13 @@
                   ⍝ Put your code and comments below here
                 ∇
 
-                ∇ urls←PastTasks url
+                ∇ urls←PastTasks url;r;paths
                   ⍝ 2020 APL Problem Solving Competition Phase II
                   ⍝ Stub function for Problem 3, Task 1 - PastTasks
                   ⍝ Put your code and comments below here
+                  r←HttpCommand.Get url
+                  paths←('[a-zA-Z0-9_/]+\.pdf'⎕S'&')r.Data
+                  urls←('https://www.dyalog.com/'∘,)¨paths
                 ∇
 
                 ∇ r←revp dna
