@@ -14,6 +14,14 @@
                   ⍝ 2020 APL Problem Solving Competition Phase II
                   ⍝ Stub function for Problem 1, Task 1 - DiveScore
                   ⍝ Put your code and comments below here
+                  :If 7=≢scores
+                          scores←scores[¯2↓2↓⍋scores]
+                  :ElseIf 5=≢scores
+                          scores←scores[¯1↓1↓⍋scores]
+                  :Else
+                          scores←scores
+                  :EndIf
+                  score←2(⍎⍕)dd×+/scores
                 ∇
 
                 ∇ steps←{p}Steps fromTo
