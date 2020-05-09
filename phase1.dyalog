@@ -17,4 +17,6 @@
         zigzag←∧/2=∘|2-/∘×2-/(10∘⊥⍣¯1)
         ⍝ 9: Rise and Fall
         risefall←{∧/(⍳∘≢≡⍋)¨(⊂((⊢⍳⌈/)↑⊢),⍵),⊂⌽((⊢⍳⌈/)↓⊢),⍵}
+        ⍝ 10: Stacking It Up
+        stacking←{↑⊃,/↓¨⍕¨⍵}
 :EndNamespace
