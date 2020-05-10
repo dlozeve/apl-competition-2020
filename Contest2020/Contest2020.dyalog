@@ -67,6 +67,23 @@
                   r←((↑∘amounts)((1+⊢)⊥⊣)(↑∘rates))¨⍳⍴rates
                 ∇
 
+                ∇ r←amounts rr2 rates;recur
+                  ⍝ Second solution
+                  ⍝ The recurrence relation (⍺ is the previous value,
+                  ⍝ ⍵[1] is the current amount, and ⍵[2] is the
+                  ⍝ current rate).
+                  recur←{⍵[1]+⍺×1+⍵[2]}
+                  ⍝ Because APL evaluates from right to left, we can't
+                  ⍝ use Scan directly, as recur is not associative. We
+                  ⍝ need something like Haskell's scanl, that will
+                  ⍝ accumulate left-to-right and accumulate
+                  ⍝ left-to-right. Scan accumulates left-to-right but
+                  ⍝ evaluates right-to-left. This solution therefore
+                  ⍝ folds for all subarrays, but it is not good in
+                  ⍝ terms of performance.
+                  r←{⊃⊃f⍨/(⌽⍵↑amounts,¨rates),⊂0 0}¨⍳⍴amounts
+                ∇
+
                 ∇ r←cashFlow pv rates
                   ⍝ 2020 APL Problem Solving Competition Phase II
                   ⍝ Stub function for Problem 5, Task 2 - pv
