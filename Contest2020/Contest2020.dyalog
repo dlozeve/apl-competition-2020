@@ -58,14 +58,13 @@
                 ⍝ Put your code and comments below here
                 sset←{((1E6|2∘×)⍣⍵)1}
 
-                ∇ r←amounts rr rates
-                  ⍝ 2020 APL Problem Solving Competition Phase II
-                  ⍝ Stub function for Problem 5, Task 1 - rr
-                  ⍝ Put your code and comments below here
-                  ⍝ ((1+⊢)⊥⊣) computes the total return for a vector
-                  ⍝ of amounts ⍺ and a vector of rates ⍵.
-                  r←((↑∘amounts)((1+⊢)⊥⊣)(↑∘rates))¨⍳⍴rates
-                ∇
+                ⍝ 2020 APL Problem Solving Competition Phase II
+                ⍝ Problem 5, Task 1 - rr
+                ⍝ ((1+⊢)⊥⊣) computes the total return for a vector of
+                ⍝ amounts ⍺ and a vector of rates ⍵. It is applied to
+                ⍝ every prefix subarray of amounts and rates to get
+                ⍝ all intermediate values. Quadratic complexity.
+                rr←(,\⊣)((1+⊢)⊥⊣)¨(,\⊢)
 
                 ∇ r←amounts rr2 rates;recur
                   ⍝ Second solution
