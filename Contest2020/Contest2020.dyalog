@@ -86,11 +86,10 @@
                 ⍝ heavily simplified.)
                 rr←{recur←{⍵[1]+⍺×1+⍵[2]} ⋄ 1↓⌽⊃{(⊂(⊃⍵)recur⍺),⍵}/⌽⍺,¨⍵}
 
-                ∇ r←cashFlow pv rates
-                  ⍝ 2020 APL Problem Solving Competition Phase II
-                  ⍝ Stub function for Problem 5, Task 2 - pv
-                  ⍝ Put your code and comments below here
-                ∇
+                ⍝ 2020 APL Problem Solving Competition Phase II
+                ⍝ Problem 5, Task 2 - pv
+                ⍝ Simply apply the formula for cashflow calculations.
+                pv←{+/⍺÷×\1+⍵}
 
                 ∇ text←templateFile Merge jsonFile
                   ⍝ 2020 APL Problem Solving Competition Phase II
