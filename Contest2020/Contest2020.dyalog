@@ -39,10 +39,18 @@
                   urls←('https://www.dyalog.com/'∘,)¨paths
                 ∇
 
-                ∇ r←revp dna
+                ⍝ Test if a DNA string is a reverse palindrome.
+                isrevp←{⍵≡⌽'TAGC'['ATCG'⍳⍵]}
+                ⍝ Generate all subarrays (position, length) pairs, for
+                ⍝ 4 ≤ length ≤ 12.
+                subarrays←{⊃,/(⍳⍵),¨¨3↓¨⍳¨12⌊1+⍵-⍳⍵}
+                ∇ r←revp dna;positions
                   ⍝ 2020 APL Problem Solving Competition Phase II
                   ⍝ Stub function for Problem 4, Task 1 - revp
                   ⍝ Put your code and comments below here
+                  positions←subarrays⍴dna
+                  ⍝ Filter subarrays which are reverse palindromes.
+                  r←↑({isrevp dna[¯1+⍵[1]+⍳⍵[2]]}¨positions)/positions
                 ∇
 
                 ∇ r←sset n
