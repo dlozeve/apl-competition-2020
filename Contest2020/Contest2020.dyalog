@@ -60,28 +60,31 @@
 
                 ⍝ 2020 APL Problem Solving Competition Phase II
                 ⍝ Problem 5, Task 1 - rr
-                ⍝ ((1+⊢)⊥⊣) computes the total return for a vector of
-                ⍝ amounts ⍺ and a vector of rates ⍵. It is applied to
-                ⍝ every prefix subarray of amounts and rates to get
-                ⍝ all intermediate values. Quadratic complexity.
-                rr←(,\⊣)((1+⊢)⊥⊣)¨(,\⊢)
 
-                ∇ r←amounts rr2 rates;recur
-                  ⍝ Second solution
-                  ⍝ The recurrence relation (⍺ is the previous value,
-                  ⍝ ⍵[1] is the current amount, and ⍵[2] is the
-                  ⍝ current rate).
-                  recur←{⍵[1]+⍺×1+⍵[2]}
-                  ⍝ Because APL evaluates from right to left, we can't
-                  ⍝ use Scan directly, as recur is not associative. We
-                  ⍝ need something like Haskell's scanl, that will
-                  ⍝ accumulate left-to-right and accumulate
-                  ⍝ left-to-right. Scan accumulates left-to-right but
-                  ⍝ evaluates right-to-left. This solution therefore
-                  ⍝ folds for all subarrays, but it is not good in
-                  ⍝ terms of performance.
-                  r←{⊃⊃f⍨/(⌽⍵↑amounts,¨rates),⊂0 0}¨⍳⍴amounts
-                ∇
+                ⍝ First solution: ((1+⊢)⊥⊣) computes the total return
+                ⍝ for a vector of amounts ⍺ and a vector of rates
+                ⍝ ⍵. It is applied to every prefix subarray of amounts
+                ⍝ and rates to get all intermediate values. However,
+                ⍝ this has quadratic complexity.
+                ⍝ rr←(,\⊣)((1+⊢)⊥⊣)¨(,\⊢)
+
+                ⍝ Second solution: We want to be able to use the
+                ⍝ recurrence relation (recur) and scan through the
+                ⍝ vectors of amounts and rates, accumulating the total
+                ⍝ value at every time step. However, APL evaluation is
+                ⍝ right-associative, so a simple Scan
+                ⍝ (recur\amounts,¨values) would not give the correct
+                ⍝ result, since recur is not associative and we need
+                ⍝ to evaluate it left-to-right. (In any case, in this
+                ⍝ case, Scan would have quadratic complexity, so would
+                ⍝ not bring any benefit over the previous solution.)
+                ⍝ What we need is something akin to Haskell's scanl
+                ⍝ function, which would evaluate left to right in O(n)
+                ⍝ time. This is what we do here, accumulating values
+                ⍝ from left to right. (This is inspired from
+                ⍝ https://dfns.dyalog.com/c_ascan.htm, although
+                ⍝ heavily simplified.)
+                rr←{recur←{⍵[1]+⍺×1+⍵[2]} ⋄ 1↓⌽⊃{(⊂(⊃⍵)recur⍺),⍵}/⌽⍺,¨⍵}
 
                 ∇ r←cashFlow pv rates
                   ⍝ 2020 APL Problem Solving Competition Phase II
