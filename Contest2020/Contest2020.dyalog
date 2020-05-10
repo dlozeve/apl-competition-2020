@@ -62,6 +62,9 @@
                   ⍝ 2020 APL Problem Solving Competition Phase II
                   ⍝ Stub function for Problem 5, Task 1 - rr
                   ⍝ Put your code and comments below here
+                  ⍝ ((1+⊢)⊥⊣) computes the total return for a vector
+                  ⍝ of amounts ⍺ and a vector of rates ⍵.
+                  r←((↑∘amounts)((1+⊢)⊥⊣)(↑∘rates))¨⍳⍴rates
                 ∇
 
                 ∇ r←cashFlow pv rates
