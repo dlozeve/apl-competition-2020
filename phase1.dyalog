@@ -4,7 +4,7 @@
         ⍝ 2: Character Building
         characters←{(~⍵∊127+⍳64)⊂⍵}
         ⍝ 3: Excel-lent Columns
-        columns←26⊥64-⍨⎕UCS
+        columns←26⊥⎕A∘⍳
         ⍝ 4: Take a Leap
         leap←1 3∊⍨(0+.=400 100 4∘.|⊢)
         ⍝ 5: Stepping in the Proper Direction
