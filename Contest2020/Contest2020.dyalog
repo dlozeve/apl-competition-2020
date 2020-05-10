@@ -116,11 +116,9 @@
                   text←('@[a-zA-Z]*@'⎕R{ns getval ¯1↓1↓⍵.Match})template
                 ∇
 
-                ∇ digit←CheckDigit digits
-                  ⍝ 2020 APL Problem Solving Competition Phase II
-                  ⍝ Stub function for Problem 7, Tasl 1 - CheckDigit
-                  ⍝ Put your code and comments below here
-                ∇
+                ⍝ 2020 APL Problem Solving Competition Phase II
+                ⍝ Problem 7, Tasl 1 - CheckDigit
+                CheckDigit←{10|-10|⍵+.×11⍴3 1}
 
                 ∇ bits←WriteUPC digits
                   ⍝ 2020 APL Problem Solving Competition Phase II
