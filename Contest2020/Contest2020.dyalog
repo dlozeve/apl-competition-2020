@@ -91,10 +91,29 @@
                 ⍝ Simply apply the formula for cashflow calculations.
                 pv←{+/⍺÷×\1+⍵}
 
-                ∇ text←templateFile Merge jsonFile
-                  ⍝ 2020 APL Problem Solving Competition Phase II
-                  ⍝ Stub function for Problem 6, Task 1 - Merge
-                  ⍝ Put your code and comments below here
+                ⍝ 2020 APL Problem Solving Competition Phase II
+                ⍝ Problem 6, Task 1 - Merge
+                ∇ val←ns getval var
+                  ⍝ The template and JSON files do not use the same
+                  ⍝ vocabulary.
+                  :If var≡'lastname'
+                          var←'surname'
+                  :EndIf
+                  :If ''≡var ⍝ literal '@'
+                          val←'@'
+                  :ElseIf (⊂var)∊ns.⎕NL ¯2
+                          val←⍕ns⍎var
+                  :Else
+                          val←'???'
+                  :EndIf
+                ∇
+
+                ∇ text←templateFile Merge jsonFile;template;ns
+                  template←⊃⎕NGET templateFile
+                  ns←⎕JSON⊃⎕NGET jsonFile
+                  ⍝ We use a simple regex search and replace on the
+                  ⍝ template.
+                  text←('@[a-zA-Z]*@'⎕R{ns getval ¯1↓1↓⍵.Match})template
                 ∇
 
                 ∇ digit←CheckDigit digits
