@@ -89,11 +89,6 @@
                 ⍝ 2020 APL Problem Solving Competition Phase II
                 ⍝ Problem 6, Task 1 - Merge
                 ∇ val←ns getval var
-                  ⍝ The template and JSON files do not use the same
-                  ⍝ vocabulary.
-                  :If var≡'lastname'
-                          var←'surname'
-                  :EndIf
                   :If ''≡var ⍝ literal '@'
                           val←'@'
                   :ElseIf (⊂var)∊ns.⎕NL ¯2
