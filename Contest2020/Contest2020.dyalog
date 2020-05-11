@@ -117,8 +117,8 @@
                 ∇
 
                 ⍝ 2020 APL Problem Solving Competition Phase II
-                ⍝ Problem 7, Tasl 1 - CheckDigit
-                CheckDigit←{10|-10|⍵+.×11⍴3 1}
+                ⍝ Problem 7, Task 1 - CheckDigit
+                CheckDigit←{10|-⍵+.×11⍴3 1}
 
                 ∇ bits←WriteUPC digits
                   ⍝ 2020 APL Problem Solving Competition Phase II
