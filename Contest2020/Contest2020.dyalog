@@ -12,8 +12,7 @@
 
                 ∇ score←dd DiveScore scores
                   ⍝ 2020 APL Problem Solving Competition Phase II
-                  ⍝ Stub function for Problem 1, Task 1 - DiveScore
-                  ⍝ Put your code and comments below here
+                  ⍝ Problem 1, Task 1 - DiveScore
                   :If 7=≢scores
                           scores←scores[¯2↓2↓⍋scores]
                   :ElseIf 5=≢scores
@@ -32,8 +31,7 @@
 
                 ∇ urls←PastTasks url;r;paths
                   ⍝ 2020 APL Problem Solving Competition Phase II
-                  ⍝ Stub function for Problem 3, Task 1 - PastTasks
-                  ⍝ Put your code and comments below here
+                  ⍝ Problem 3, Task 1 - PastTasks
                   r←HttpCommand.Get url
                   paths←('[a-zA-Z0-9_/]+\.pdf'⎕S'&')r.Data
                   urls←('https://www.dyalog.com/'∘,)¨paths
@@ -46,16 +44,14 @@
                 subarrays←{⊃,/(⍳⍵),¨¨3↓¨⍳¨12⌊1+⍵-⍳⍵}
                 ∇ r←revp dna;positions
                   ⍝ 2020 APL Problem Solving Competition Phase II
-                  ⍝ Stub function for Problem 4, Task 1 - revp
-                  ⍝ Put your code and comments below here
+                  ⍝ Problem 4, Task 1 - revp
                   positions←subarrays⍴dna
                   ⍝ Filter subarrays which are reverse palindromes.
                   r←↑({isrevp dna[¯1+⍵[1]+⍳⍵[2]]}¨positions)/positions
                 ∇
 
                 ⍝ 2020 APL Problem Solving Competition Phase II
-                ⍝ Stub function for Problem 4, Task 2 - sset
-                ⍝ Put your code and comments below here
+                ⍝ Problem 4, Task 2 - sset
                 sset←{((1E6|2∘×)⍣⍵)1}
 
                 ⍝ 2020 APL Problem Solving Competition Phase II
@@ -82,8 +78,7 @@
                 ⍝ function, which would evaluate left to right in O(n)
                 ⍝ time. This is what we do here, accumulating values
                 ⍝ from left to right. (This is inspired from
-                ⍝ https://dfns.dyalog.com/c_ascan.htm, although
-                ⍝ heavily simplified.)
+                ⍝ dfns.ascan, although heavily simplified.)
                 rr←{recur←{⍵[1]+⍺×1+⍵[2]} ⋄ 1↓⌽⊃{(⊂(⊃⍵)recur⍺),⍵}/⌽⍺,¨⍵}
 
                 ⍝ 2020 APL Problem Solving Competition Phase II
