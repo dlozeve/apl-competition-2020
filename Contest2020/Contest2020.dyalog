@@ -127,10 +127,35 @@
                   ⍝ Put your code and comments below here
                 ∇
 
-                ∇ parts←Balance nums
+                ∇ parts←Balance nums;subsets;partitions
                   ⍝ 2020 APL Problem Solving Competition Phase II
-                  ⍝ Stub function for Problem 8, Task 1 - Balance
-                  ⍝ Put your code and comments below here
+                  ⍝ Problem 8, Task 1 - Balance
+
+                  ⍝ This is a brute force solution, running in
+                  ⍝ exponential time. We generate all the possible
+                  ⍝ partitions, filter out those which are not
+                  ⍝ balanced, and return the first matching one. There
+                  ⍝ are more advanced approach running in
+                  ⍝ pseudo-polynomial time (based on dynamic
+                  ⍝ programming, see the "Partition problem" Wikipedia
+                  ⍝ page), but they are not warranted here, as the
+                  ⍝ input size remains fairly small.
+
+                  ⍝ Generate all partitions of a vector of a given
+                  ⍝ size, as binary mask vectors.
+                  subsets←{1↓2⊥⍣¯1⍳2*⍵}
+                  ⍝ Keep only the subsets whose sum is exactly
+                  ⍝ (+/nums)÷2.
+                  partitions←nums{((2÷⍨+/⍺)=⍺+.×⍵)/⍵}subsets⍴nums
+                  :If 0=≢,partitions
+                          ⍝ If no partition satisfy the above
+                          ⍝ criterion, we return ⍬.
+                          parts←⍬
+                  :Else
+                          ⍝ Otherwise, we return the first possible
+                          ⍝ partition.
+                          parts←nums{((⊂,(⊂~))⊃↓⍉⍵)/¨2⍴⊂⍺}partitions
+                  :EndIf
                 ∇
 
                 ∇ weights←Weights filename
