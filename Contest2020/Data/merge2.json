@@ -1,6 +1,6 @@
 {
     "firstname":"Donald",
-    "surname":"Duck",
+    "lastname":"Duck",
     "prize":"BMW",
     "value":30000,
     "salutation":"Dear"
