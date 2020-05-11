@@ -104,11 +104,11 @@
                 ∇
 
                 ∇ text←templateFile Merge jsonFile;template;ns
-                  template←⊃⎕NGET templateFile
+                  template←⊃⎕NGET templateFile 1
                   ns←⎕JSON⊃⎕NGET jsonFile
                   ⍝ We use a simple regex search and replace on the
                   ⍝ template.
-                  text←('@[a-zA-Z]*@'⎕R{ns getval ¯1↓1↓⍵.Match})template
+                  text←↑('@[a-zA-Z]*@'⎕R{ns getval ¯1↓1↓⍵.Match})template
                 ∇
 
                 ⍝ 2020 APL Problem Solving Competition Phase II
