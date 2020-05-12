@@ -153,10 +153,22 @@
                   :EndIf
                 ∇
 
-                ∇ weights←Weights filename
+                ∇ weights←Weights filename;mobile;branches;mat
                   ⍝ 2020 APL Problem Solving Competition Phase II
                   ⍝ Stub function for Problem 9, Task 1 - Weights
                   ⍝ Put your code and comments below here
+
+                  ⍝ Parse the mobile input file.
+                  mobile←↑⊃⎕NGET filename 1
+                  branches←⍸mobile∊'┌┴┐'
+                  ⍝ TODO: Build the matrix of coefficients mat.
+
+                  ⍝ Solve the system of equations (arbitrarily setting
+                  ⍝ the first variable at 1 because the system is
+                  ⍝ overdetermined), then multiply the coefficients by
+                  ⍝ their least common multiple to get the smallest
+                  ⍝ integer weights.
+                  weights←((1∘,)×(∧/÷))mat[;1]⌹1↓[2]mat
                 ∇
 
         :EndNamespace
