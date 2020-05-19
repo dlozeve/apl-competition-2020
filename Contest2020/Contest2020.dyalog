@@ -25,8 +25,16 @@
 
                 ∇ steps←{p}Steps fromTo
                   ⍝ 2020 APL Problem Solving Competition Phase II
-                  ⍝ Stub function for Problem 2, Task 1 - Steps
-                  ⍝ Put your code and comments below here
+                  ⍝ Problem 2, Task 1 - Steps
+                  :If 0=⎕NC'p' ⍝ No left argument: same as Problem 5 of Phase I
+                          steps←{(⊃⍵)+(-×-/⍵)×0,⍳|-/⍵}fromTo
+                  :ElseIf p<0
+                          steps←(-⌊p){(⊃⍵)+(-×-/⍵)×0,(⍳⍺)×|-/⍵÷⍺}fromTo
+                  :ElseIf p>0
+                          steps←p{(⊃⍵)+(-×-/⍵)×(|-/⍵)⌊⍺×0,⍳⌈(|-/⍵)÷⍺}fromTo
+                  :ElseIf p=0
+                          steps←⊃fromTo
+                  :EndIf
                 ∇
 
                 ∇ urls←PastTasks url;r;paths
