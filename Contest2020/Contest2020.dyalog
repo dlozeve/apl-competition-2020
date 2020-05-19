@@ -141,8 +141,21 @@
 
                 ∇ digits←ReadUPC bits
                   ⍝ 2020 APL Problem Solving Competition Phase II
-                  ⍝ Stub function for Problem 7, Task 3 - ReadUPC
-                  ⍝ Put your code and comments below here
+                  ⍝ Problem 7, Task 3 - ReadUPC
+                  :If 95≠⍴bits ⍝ incorrect number of bits
+                          digits←¯1
+                  :Else
+                          ⍝ Test if the barcode was scanned right-to-left.
+                          :If 0=2|+/bits[3+⍳7]
+                                  bits←⌽bits
+                          :EndIf
+                          digits←({¯1+lrepr⍳⍵}¨(7/⍳6)⊆42↑3↓bits),{¯1+rrepr⍳⍵}¨(7/⍳6)⊆¯42↑¯3↓bits
+                          :If ~∧/digits∊0,⍳9 ⍝ incorrect parity
+                                  digits←¯1
+                          :ElseIf (⊃⌽digits)≠CheckDigit ¯1↓digits ⍝ incorrect check digit
+                                  digits←¯1
+                          :EndIf
+                  :EndIf
                 ∇
 
                 ∇ parts←Balance nums;subsets;partitions
