@@ -121,10 +121,22 @@
                 ⍝ Problem 7, Task 1 - CheckDigit
                 CheckDigit←{10|-⍵+.×11⍴3 1}
 
-                ∇ bits←WriteUPC digits
+                ⍝ Left and right representations of digits. Decoding
+                ⍝ the binary representation from decimal is more
+                ⍝ compact than writing everything explicitly.
+                lrepr←⍉(7⍴2)⊤13 25 19 61 35 49 47 59 55 11
+                rrepr←~¨lrepr
+
+                ∇ bits←WriteUPC digits;left;right
                   ⍝ 2020 APL Problem Solving Competition Phase II
-                  ⍝ Stub function for Problem 7, Task 2 - WriteUPC
-                  ⍝ Put your code and comments below here
+                  ⍝ Problem 7, Task 2 - WriteUPC
+                  :If (11=≢digits)∧∧/digits∊0,⍳9
+                          left←,lrepr[1+6↑digits;]
+                          right←,rrepr[1+6↓digits,CheckDigit digits;]
+                          bits←1 0 1,left,0 1 0 1 0,right,1 0 1
+                  :Else
+                          bits←¯1
+                  :EndIf
                 ∇
 
                 ∇ digits←ReadUPC bits
