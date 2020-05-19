@@ -23,18 +23,21 @@
                   score←2(⍎⍕)dd×+/scores
                 ∇
 
-                ∇ steps←{p}Steps fromTo
+                ∇ steps←{p}Steps fromTo;segments;width
                   ⍝ 2020 APL Problem Solving Competition Phase II
                   ⍝ Problem 2, Task 1 - Steps
+                  width←|-/fromTo
                   :If 0=⎕NC'p' ⍝ No left argument: same as Problem 5 of Phase I
-                          steps←{(⊃⍵)+(-×-/⍵)×0,⍳|-/⍵}fromTo
-                  :ElseIf p<0
-                          steps←(-⌊p){(⊃⍵)+(-×-/⍵)×0,(⍳⍺)×|-/⍵÷⍺}fromTo
-                  :ElseIf p>0
-                          steps←p{(⊃⍵)+(-×-/⍵)×(|-/⍵)⌊⍺×0,⍳⌈(|-/⍵)÷⍺}fromTo
-                  :ElseIf p=0
-                          steps←⊃fromTo
+                          segments←0,⍳width
+                  :ElseIf p<0 ⍝ -⌊p is the number of equally-sized steps to take
+                          segments←(-⌊p){0,⍵×⍺÷⍨⍳⍺}width
+                  :ElseIf p>0 ⍝ p is the step size
+                          segments←p{⍵⌊⍺×0,⍳⌈⍵÷⍺}width
+                  :ElseIf p=0 ⍝ As if we took zero step
+                          segments←0
                   :EndIf
+                  ⍝ Take into account the start point and the direction.
+                  steps←fromTo{(⊃⍺)+(-×-/⍺)×⍵}segments
                 ∇
 
                 ∇ urls←PastTasks url;r;paths
