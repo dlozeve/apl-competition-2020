@@ -1,11 +1,20 @@
 ﻿:Namespace Contest2020
 
-        AboutMe←,⊂'Tell us a bit about yourself'
-        ⍝ AboutMe,←⊂''  ⍝ copy, uncomment, and edit this line if you need more space
+        AboutMe←,⊂'I am a Data Scientist. Even if I do not use APL in my day job (except'
+        AboutMe,←⊂'if you count Numpy), I dabbled in it for a few years for little'
+        AboutMe,←⊂'one-liners. I picked up APL because I love learning new languages, and'
+        AboutMe,←⊂'APL is a significantly different from any paradigm I tried before.'
 
-        Reaction←,⊂'Please share your thoughts about the 2020 competition'
-        ⍝ Reaction,←⊂''  ⍝ copy, uncomment, and edit this line if you need more space
-
+        Reaction←,⊂'The challenges were super fun! This is by far the largest amount of'
+        Reaction,←⊂'code in APL that I have written. In the process, I discovered many'
+        Reaction,←⊂'aspects of APL I enjoy (the interactivity, natural data'
+        Reaction,←⊂'manipulation). The challenges about data manipulation were great'
+        Reaction,←⊂'(e.g. UPC). The challenges with complex computations (e.g. rates of'
+        Reaction,←⊂'return) were excellent for learning APL and complex functions and'
+        Reaction,←⊂'operators. The most difficult (or boring) part was everything related'
+        Reaction,←⊂'to parsing and IO. Reading a file, interacting with the web, well,'
+        Reaction,←⊂'it is not something APL was designed for, and you feel like fighting'
+        Reaction,←⊂'the system.'
 
         :Namespace Problems
                 (⎕IO ⎕ML ⎕WX)←1 1 3
