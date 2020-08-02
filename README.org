@@ -1,0 +1,9 @@
+* Dyalog APL Problem Solving Competition 2020
+
+My solutions for the [[https://www.dyalogaplcompetition.com/][2020 APL Problem Solving Competition]].
+
+- Phase I: [[phase1.dyalog]]
+- Phase II: [[Contest2020/Contest2020.dyalog]]
+
+See also the accompanying blog posts for annotated solutions: [[https://www.lozeve.com/posts/dyalog-apl-competition-2020-phase-1][Phase I]]
+and [[https://www.lozeve.com/posts/dyalog-apl-competition-2020-phase-2][Phase II]].
